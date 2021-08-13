@@ -1,0 +1,24 @@
+{
+  "items": [
+    {
+      "id": "1",
+      "title": "pen",
+      "price": 20
+    },
+    {
+      "id": "2",
+      "title": "pencil",
+      "price": 30
+    },
+    {
+      "id": "3",
+      "title": "book",
+      "price": 40
+    },
+    {
+      "id": "4",
+      "title": "motor",
+      "price": 50
+    }
+  ]
+}
