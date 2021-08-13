@@ -14,8 +14,8 @@ li {
 }
 
 button {
-  /*background-color: ;*/
-  width: 50px;
+  min-width: 50px;
+  padding: 0 15px;
 }
 .App {
   width: 90%;
