@@ -7,65 +7,18 @@ function App() {
   const dispatch = useDispatch();
 
   const BasketItems = useSelector((state) => state.BasketItems);
-  //const [BasketItems, setBasketItems] = useState([]);
-
   const [Data /*setData*/] = useState(data);
 
   const addItemHandler = (addedItem) => {
-    const internalBasketItems = [...BasketItems];
-
-    let existingItem = internalBasketItems.find(
-      (item) => item.id === addedItem.id
-    );
-
-    if (existingItem) {
-      let existingItemIndex = internalBasketItems.indexOf(existingItem);
-
-      existingItem.qty = existingItem.qty + 1;
-      existingItem.totPrice = existingItem.qty * existingItem.price;
-      internalBasketItems[existingItemIndex] = existingItem;
-    } else {
-      internalBasketItems.push({
-        id: addedItem.id,
-        title: addedItem.title,
-        price: addedItem.price,
-        qty: 1,
-        totPrice: addedItem.price,
-      });
-    }
-    dispatch({ type: "basket", payload: [...internalBasketItems] });
-    //setBasketItems([...internalBasketItems]);
+    dispatch({ type: "addItem", addedItem: addedItem });
   };
 
-  const decreaseItemHandler = (removedItem) => {
-    const internalBasketItems = [...BasketItems];
-
-    let existingItem = internalBasketItems.find(
-      (item) => item.id === removedItem.id
-    );
-
-    let existingItemIndex = internalBasketItems.indexOf(removedItem);
-
-    if (existingItem.qty === 1) {
-      internalBasketItems.splice(existingItemIndex, 1);
-    } else {
-      existingItem.qty = existingItem.qty - 1;
-      existingItem.totPrice = existingItem.qty * existingItem.price;
-      internalBasketItems[existingItemIndex] = existingItem;
-    }
-
-    dispatch({ type: "basket", payload: [...internalBasketItems] });
-    //setBasketItems([...internalBasketItems]);
+  const decreaseItemHandler = (decreasedItem) => {
+    dispatch({ type: "decreaseItem", decreasedItem: decreasedItem });
   };
 
   const removeItemHandler = (removedItem) => {
-    const internalBasketItems = [...BasketItems];
-
-    let existingItemIndex = internalBasketItems.indexOf(removedItem);
-
-    internalBasketItems.splice(existingItemIndex, 1);
-
-    dispatch({ type: "basket", payload: [...internalBasketItems] });
+    dispatch({ type: "removeItem", removedItem: removedItem });
   };
 
   //console.log(BasketItems);
